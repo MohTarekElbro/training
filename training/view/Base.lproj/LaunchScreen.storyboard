@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Rectangle 20" translatesAutoresizingMaskIntoConstraints="NO" id="DY8-li-3nI">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="180" translatesAutoresizingMaskIntoConstraints="NO" id="ffH-0r-1YY" userLabel="logosContainer">
+                                <rect key="frame" x="77.666666666666686" y="200.66666666666663" width="238" height="451"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="uCf-yp-6iq">
+                                        <rect key="frame" x="0.0" y="0.0" width="238" height="238"/>
+                                    </imageView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Loding icon" translatesAutoresizingMaskIntoConstraints="NO" id="fua-qZ-OEE">
+                                        <rect key="frame" x="0.0" y="418" width="238" height="33"/>
+                                    </imageView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ffH-0r-1YY" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="Ai7-rC-l78"/>
+                            <constraint firstItem="DY8-li-3nI" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="Elg-zu-Eim"/>
+                            <constraint firstAttribute="bottom" secondItem="DY8-li-3nI" secondAttribute="bottom" id="LkV-rk-daq"/>
+                            <constraint firstItem="ffH-0r-1YY" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="MXQ-wb-jg5"/>
+                            <constraint firstItem="DY8-li-3nI" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="lMS-PV-Noa"/>
+                            <constraint firstAttribute="trailing" secondItem="DY8-li-3nI" secondAttribute="trailing" id="n1g-bO-MD6"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.307692307692307" y="374.64454976303318"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Loding icon" width="36" height="33"/>
+        <image name="Logo" width="238" height="238"/>
+        <image name="Rectangle 20" width="375" height="812"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

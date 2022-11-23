@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="productsCell" id="gTV-IL-0wX" customClass="ProductsCell" customModule="training" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="231"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="150" height="231"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" image="welcome3" translatesAutoresizingMaskIntoConstraints="NO" id="ngh-dO-tAr">
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="149.66666666666666"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FG5-tL-oCQ">
+                        <rect key="frame" x="0.0" y="154.66666666666666" width="150" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0IC-D0-aE9">
+                        <rect key="frame" x="0.0" y="175.66666666666666" width="150" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPD-PY-27g">
+                        <rect key="frame" x="0.0" y="196.66666666666666" width="150" height="34.333333333333343"/>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Favorite"/>
+                        <connections>
+                            <action selector="FavortiePressed:" destination="gTV-IL-0wX" eventType="touchUpInside" id="DiT-DW-isb"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="0IC-D0-aE9" secondAttribute="trailing" id="39L-iU-yMh"/>
+                <constraint firstAttribute="trailing" secondItem="ngh-dO-tAr" secondAttribute="trailing" id="57L-QY-flL"/>
+                <constraint firstItem="ngh-dO-tAr" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="CfZ-pp-OVQ"/>
+                <constraint firstItem="FG5-tL-oCQ" firstAttribute="top" secondItem="ngh-dO-tAr" secondAttribute="bottom" constant="5" id="HpB-uz-JB6"/>
+                <constraint firstAttribute="trailing" secondItem="FG5-tL-oCQ" secondAttribute="trailing" id="Rmb-Zp-dNb"/>
+                <constraint firstItem="hPD-PY-27g" firstAttribute="top" secondItem="0IC-D0-aE9" secondAttribute="bottom" id="S2T-Pa-VYz"/>
+                <constraint firstItem="hPD-PY-27g" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Tip-7M-k9g"/>
+                <constraint firstItem="0IC-D0-aE9" firstAttribute="top" secondItem="FG5-tL-oCQ" secondAttribute="bottom" id="UGA-yR-jeR"/>
+                <constraint firstItem="ngh-dO-tAr" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XLX-Tv-QhM"/>
+                <constraint firstItem="FG5-tL-oCQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="YwY-zp-yn1"/>
+                <constraint firstAttribute="bottom" secondItem="hPD-PY-27g" secondAttribute="bottom" id="cWf-A1-3Xo"/>
+                <constraint firstItem="0IC-D0-aE9" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="g6a-ie-evf"/>
+                <constraint firstAttribute="trailing" secondItem="hPD-PY-27g" secondAttribute="trailing" id="zW8-vk-xqE"/>
+            </constraints>
+            <size key="customSize" width="150" height="231"/>
+            <connections>
+                <outlet property="name" destination="0IC-D0-aE9" id="iZ1-ZL-8Y5"/>
+                <outlet property="price" destination="FG5-tL-oCQ" id="UGf-Io-17F"/>
+                <outlet property="productImage" destination="ngh-dO-tAr" id="L9E-kK-Cbc"/>
+            </connections>
+            <point key="canvasLocation" x="153.84615384615384" y="58.649289099526065"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="welcome3" width="339.66665649414062" height="216.33332824707031"/>
+    </resources>
+</document>
