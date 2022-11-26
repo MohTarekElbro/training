@@ -16,9 +16,9 @@ import Foundation
 
 // MARK: - ProductResponse
 struct ProductResponse: Codable {
-    let status: Bool
-    let message: String?
-    let data: DataClass?
+    var status: Bool?
+    var message: String?
+    var data: DataClass?
 }
 
 // MARK: - DataClass

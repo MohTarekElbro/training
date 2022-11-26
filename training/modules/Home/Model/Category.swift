@@ -16,9 +16,10 @@ import Foundation
 
 // MARK: - RegisterResponse
 struct CategoryResponse: Codable {
-    let status: Bool
-    let message: String?
-    let data: CategoriesData?
+    var status: Bool?
+    var message: String?
+    var data: CategoriesData?
+    
 }
 
 // MARK: - DataClass
@@ -51,7 +52,7 @@ struct CategoriesData: Codable {
 
 // MARK: - Datum
 struct Category: Codable {
-    let id: Int
-    let name: String
-    let image: String
+    var id: Int
+    var name: String
+    var image: String
 }

@@ -23,10 +23,7 @@ class ViewController: UIViewController {
         IQKeyboardManager.shared.enable = true
         IQKeyboardManager.shared.enableAutoToolbar = false
 
-        
     }
-    
-    
 }
 extension UIView{
     func addBottomShadow(){

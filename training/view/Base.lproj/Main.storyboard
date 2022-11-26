@@ -460,8 +460,8 @@
                                         </collectionViewFlowLayout>
                                         <cells/>
                                         <connections>
-                                            <outlet property="dataSource" destination="pXS-DN-jxU" id="UVY-LK-40g"/>
-                                            <outlet property="delegate" destination="pXS-DN-jxU" id="5x8-Ro-Qe2"/>
+                                            <outlet property="dataSource" destination="pXS-DN-jxU" id="PsK-ji-nzT"/>
+                                            <outlet property="delegate" destination="pXS-DN-jxU" id="xAH-bp-bDg"/>
                                         </connections>
                                     </collectionView>
                                 </subviews>
@@ -834,8 +834,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="UcA-C7-gtk"/>
-        <segue reference="Xat-zo-2fC"/>
+        <segue reference="l5n-B8-fc9"/>
+        <segue reference="7mI-Lb-CmE"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="cart.fill" catalog="system" width="128" height="102"/>

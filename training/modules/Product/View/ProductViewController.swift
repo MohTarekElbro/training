@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import RxCocoa
+import RxSwift
 protocol ProductViewDelegate{
     func loadCategories(categories:Array<Category>)
     func loadProducts(products:Array<Product>)
@@ -24,32 +26,33 @@ class ProductViewController: UIViewController {
     
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
-    var product: Product?
-    
-    var timer = Timer()
+
+    var productViewModel = ProductViewModdel()
     var counter = 0
-    var token = ""
     
     @IBOutlet weak var addToCartButton: UIButton!
-    var presenter :ProductPresenterDelegate!
-    
+    let disposeBag = DisposeBag()
     var images = Array<String>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if (product?.inCart == true ){
-            print("ProductInCart")
-            addToCartButton.isHidden = true
+        showData()
+    }
+    
+    func showData(){
+        if let product = self.productViewModel.product.value{
+            if (product.inCart == true ){
+                addToCartButton.isHidden = true
+            }
+            images = product.images!
+            pageControl.numberOfPages = images.count
+            pageControl.currentPage = 0
+            pageControl.addTarget(self, action: #selector(self.pageControlSelectionAction(_:)), for: .menuActionTriggered)
+            name.text = product.name
+            price.text = "$"+String(format: "%.0f", product.price/100)
+            desc.text = product.datumDescription
+            imagesSliderCollection.reloadData()
         }
-        self.presenter = ProductPresenter(productViewDelegate: self)
-        images = product!.images!
-        pageControl.numberOfPages = images.count
-        pageControl.currentPage = 0
-        pageControl.addTarget(self, action: #selector(self.pageControlSelectionAction(_:)), for: .menuActionTriggered)
-        name.text = product!.name
-        price.text = "$"+String(format: "%.0f", product!.price/100)
-        desc.text = product!.datumDescription
-        
     }
     
     @IBAction func morePressed(_ sender: UIButton) {
@@ -66,15 +69,22 @@ class ProductViewController: UIViewController {
     }
     
     @IBAction func addToCartPressed(_ sender: UIButton) {
-        if (product?.inCart == false ){
-            self.presenter.addProductToCart(token: token, product_id: product!.id)
+        if (self.productViewModel.product.value?.inCart == false ){
+            self.productViewModel.addToCart()
+                .observe(on: MainScheduler.instance)
+                .subscribe(onNext: { response in
+                    if response.status == true{
+                        self.performSegue(withIdentifier: K.ProductToCart, sender: self)
+                    }
+                    
+                }, onError: { error in
+                    print("error: \(error)")
+                }).disposed(by: disposeBag)
         }
     }
     
     @objc func pageControlSelectionAction(_ sender: UIPageControl) {
-        print("pageControlSelectionAction: \(sender.currentPage)")
         let page: Int? = sender.currentPage
-        
         let index = IndexPath(item: page!, section: 0)
         imagesSliderCollection.scrollToItem(at: index, at: .centeredHorizontally, animated: true)
     }
@@ -92,38 +102,11 @@ class ProductViewController: UIViewController {
             counter = 1
         }
         pageControl.currentPage = counter
-        
     }
-    
-    
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let scrollPos = scrollView.contentOffset.x / self.imagesSliderCollection.frame.width
         pageControl.currentPage = Int(scrollPos)
-    }
-    
-    
-    
-}
-
-extension ProductViewController:ProductViewDelegate{
-    func loadCategories(categories: Array<Category>) {
-        return
-    }
-    
-    func openCart() {
-        performSegue(withIdentifier: K.ProductToCart, sender: self)
-    }
-    
-    func loadProducts(products: Array<Product>) {
-       return
-    }
-    
-    func showProductError(message: String?, status: Bool?) {
-        print(message!)
-        if let msg = message{
-            self.showToast(msg)
-        }
     }
 }
 

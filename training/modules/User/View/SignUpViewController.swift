@@ -6,23 +6,34 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
-class SignUpViewController: UIViewController,UserViewDelegate {
+class SignUpViewController: UIViewController {
     
     
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var signUpButton: UIButton!
+    
+    private let registerViewModel = RegisterViewModel()
+    private let disposeBag = DisposeBag()
 
-    private var presenter : UserPresenterDelegate!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         nameTextField.addBottomBorder()
         emailTextField.addBottomBorder()
         passwordTextField.addBottomBorder()
         signUpButton.addBottomShadow()
-        self.presenter = UserPresenter(userViewDelegate:self)
+        
+        nameTextField.rx.text.map{$0 ?? ""}.bind(to: registerViewModel.nameObs).disposed(by: disposeBag)
+        emailTextField.rx.text.map{$0 ?? ""}.bind(to: registerViewModel.emailObs).disposed(by: disposeBag)
+        passwordTextField.rx.text.map{$0 ?? ""}.bind(to: registerViewModel.passwordObs).disposed(by: disposeBag)
+        
+        registerViewModel.isValid().bind(to: signUpButton.rx.isEnabled).disposed(by: disposeBag)
+        registerViewModel.isValid().map{$0 ? 1 : 0.5}.bind(to: signUpButton.rx.alpha).disposed(by: disposeBag)
 
     }
     
@@ -36,17 +47,20 @@ class SignUpViewController: UIViewController,UserViewDelegate {
         }
     }
     
-    
-    
-    
     @IBAction func registerPressed(_ sender: UIButton) {
-        print("Register")
-        if let name = nameTextField.text, let email = emailTextField.text, let password = passwordTextField.text{
-            presenter.register(name: name , email: email, phone: "0122776624", password: password)
-        }
-        else{
-            print("fill all fields")
-        }
+        registerViewModel.register()
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { response in
+                switch response.status {
+                case true:
+                    self.goToHome(token: response.data!.token)
+                case false:
+                    self.showError(message: "Failed to get token with incorrect login info.", status: false)
+                }
+            }, onError: { error in
+                print("error: \(error)")
+            }).disposed(by: disposeBag)
+        
     }
     
 }
